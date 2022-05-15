@@ -1,66 +1,47 @@
 
 def rps(hand,enemy_hand)
   if hand == 1
+    puts "あなた:グーを出した"
     if enemy_hand == 1
-      return "引き分け"
+      puts "あいて:グーを出した"
+      $result = "引き分け"
     elsif enemy_hand == 2
-      return "勝ち"
+      puts "あいて:チョキを出した"
+      $result = "勝ち"
     elsif enemy_hand == 3
-      return "負け"
+      puts "あいて:パーを出した"
+      $result = "負け"
     end
   elsif hand == 2
+    puts "あなた:チョキを出した"
     if enemy_hand == 1
-      return "負け"
+      puts "あいて:グーを出した"
+      $result = "負け"
     elsif enemy_hand == 2
-      return "引き分け"
+      puts "あいて:チョキを出した"
+      $result = "引き分け"
     elsif enemy_hand == 3
-      return "勝ち"
+      puts "あいて:パーを出した"
+      $result = "勝ち"
     end
   elsif hand == 3
+    puts "あなた:パーを出した"
     if enemy_hand == 1
-      return "勝ち"
+      puts "あいて:グーを出した"
+      $result = "勝ち"
     elsif enemy_hand == 2
-      return "負け"
+      puts "あいて:チョキを出した"
+      $result = "負け"
     elsif enemy_hand == 3
-      return "引き分け"
+      puts "あいて:パーを出した"
+      $result = "引き分け"
     end
   else
     puts "なにかへん＠ｒｐｓ"
   end
 end
 
-def rps_result(hand,enemy_hand)
-  if hand == 1
-    puts "あなた:グーを出した"
-    if enemy_hand == 1
-      puts "あいて:グーを出した"
-    elsif enemy_hand == 2
-      puts "あいて:チョキを出した"
-    elsif enemy_hand == 3
-      puts "あいて:パーを出した"
-    end
-  elsif hand == 2
-    puts "あなた:チョキを出した"
-    if enemy_hand == 1
-      puts "あいて:グーを出した"
-    elsif enemy_hand == 2
-      puts "あいて:チョキを出した"
-    elsif enemy_hand == 3
-      puts "あいて:パーを出した"
-    end
-  elsif hand == 3
-    puts "あなた:パーを出した"
-    if enemy_hand == 1
-      puts "あいて:グーを出した"
-    elsif enemy_hand == 2
-      puts "あいて:チョキを出した"
-    elsif enemy_hand == 3
-      puts "あいて:パーを出した"
-    end
-  else
-    puts "なにかへん＠ｒｐｓres"
-  end
-end
+
 
 def which_angle(angle)
   if angle == 1
@@ -123,23 +104,21 @@ loop{
     puts "ぽん！！"
   end
   
+  rps(my_hand, enemy_hand)
   
-  if rps(my_hand, enemy_hand) == "勝ち"
+  if $result == "勝ち"
     aiko = false
-    rps_result(my_hand, enemy_hand)
     if atti()
       puts "あなたの勝ち！！"
       $win +=1
     end
-  elsif rps(my_hand, enemy_hand) == "負け"
-    rps_result(my_hand, enemy_hand)
+  elsif $result == "負け"
     aiko = false
     if atti()
       puts "あなたの負け..."
       $lose +=1
     end
-  elsif rps(my_hand, enemy_hand) == "引き分け"
-    rps_result(my_hand, enemy_hand)
+  elsif $result == "引き分け"
     aiko = true
   else
     puts "なにかへん"
